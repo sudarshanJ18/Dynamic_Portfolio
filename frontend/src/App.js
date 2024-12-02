@@ -39,10 +39,11 @@ function App() {
               path="/"
               element={
                 <Home
-                  youtubes={user.youtube}
-                  timelines={user.timeline}
-                  skills={user.skills}
-                />
+  youtubes={user ? user.youtube : []}
+  timelines={user ? user.timeline : []}
+  skills={user ? user.skills : []}
+/>
+
               }
             />
             <Route path="/about" element={<About about={user.about} />} />
