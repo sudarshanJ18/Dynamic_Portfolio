@@ -39,17 +39,19 @@ function App() {
               path="/"
               element={
                 <Home
-  youtubes={user ? user.youtube : []}
-  timelines={user ? user.timeline : []}
-  skills={user ? user.skills : []}
-/>
-
+                  youtubes={user ? user.youtube : []}
+                  timelines={user ? user.timeline : []}
+                  skills={user ? user.skills : []}
+                />
               }
             />
-            <Route path="/about" element={<About about={user.about} />} />
+            <Route
+              path="/about"
+              element={<About about={user ? user.about : ""} />}
+            />
             <Route
               path="/projects"
-              element={<Projects projects={user.projects} />}
+              element={<Projects projects={user ? user.projects : []} />}
             />
             <Route path="/contact" element={<Contact />} />
             <Route
@@ -64,13 +66,11 @@ function App() {
               path="/admin/youtube"
               element={isAuthenticated ? <Youtube /> : <Login />}
             />
-
             <Route
               path="/admin/project"
               element={isAuthenticated ? <Project /> : <Login />}
             />
           </Routes>
-
           <Footer />
         </>
       )}
